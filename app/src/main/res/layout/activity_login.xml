@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/login_page"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToOutline="true"
+    android:background="@drawable/background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp"
+        android:gravity="center"
+        android:background="#8111">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ZakatKu"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:background="@drawable/circle"
+            android:textColor="#FFFFFF"/>
+
+        <EditText
+            android:id="@+id/usernamelogin"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:hint="Username"
+            android:paddingLeft="15dp"
+            android:textSize="15dp"
+            android:textColorHint="#FFFBF5"
+            android:textColor="#FFFBF5"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/inp_tamplate"
+            android:inputType="text"/>
+
+        <EditText
+            android:id="@+id/passwordlogin"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:hint="Password"
+            android:paddingLeft="15dp"
+            android:textSize="15dp"
+            android:textColorHint="#FFFBF5"
+            android:textColor="#FFFBF5"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/inp_tamplate"
+            android:inputType="textPassword"/>
+
+        <TextView
+            android:id="@+id/lupapsswd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lupa Password ?"
+            android:layout_marginLeft="96dp"
+            android:layout_marginTop="15dp"
+            android:textStyle="bold"
+            android:textColor="#19A7CE"/>
+
+        <ProgressBar
+            android:id="@+id/progressbarlogin"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/btnlogin"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:text="Masuk"
+            android:textAllCaps="false"
+            android:layout_marginTop="15dp"
+            android:textColor="#FFFBF5"
+            android:background="@drawable/btncolor"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="15dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Belum Punya Akun ?"
+                android:textColor="#E1E8EB"/>
+
+            <TextView
+                android:id="@+id/txtsignup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" Daftar"
+                android:clickable="true"
+                android:textColor="#19A7CE"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
