@@ -24,6 +24,9 @@
             android:background="@drawable/circle"
             android:textColor="#FFFFFF"/>
 
+
+
+
         <EditText
             android:id="@+id/usernamelogin"
             android:layout_width="300dp"
