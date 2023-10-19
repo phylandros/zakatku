@@ -24,15 +24,13 @@
             android:background="@drawable/circle"
             android:textColor="#FFFFFF"/>
 
-
-
-
         <EditText
             android:id="@+id/usernamelogin"
             android:layout_width="300dp"
             android:layout_height="40dp"
             android:hint="Username"
             android:paddingLeft="15dp"
+            android:paddingRight="15dp"
             android:textSize="15dp"
             android:textColorHint="#FFFBF5"
             android:textColor="#FFFBF5"
@@ -46,6 +44,7 @@
             android:layout_height="40dp"
             android:hint="Password"
             android:paddingLeft="15dp"
+            android:paddingRight="15dp"
             android:textSize="15dp"
             android:textColorHint="#FFFBF5"
             android:textColor="#FFFBF5"

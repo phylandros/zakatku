@@ -13,6 +13,10 @@
         android:theme="@style/Theme.Zakatku"
         tools:targetApi="31">
         <activity
+            android:name=".NiatActivity"
+            
+            android:exported="false" />
+        <activity
             android:name=".RegisterActivity"
             android:exported="false" />
         <activity
@@ -26,9 +30,7 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="false">
-
-        </activity>
+            android:exported="false"></activity>
     </application>
 
 </manifest>

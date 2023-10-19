@@ -6,4 +6,30 @@
     <string name="menu_dashboard">Dashboard</string>
     <string name="menu_profile">Profile</string>
 
+    <string name="pengertian_zakat">
+”Rasulullah SAW mewajibkan zakat fitrah satu sha’ kurma atau satu sha’ gandum atas umat muslim; baik hamba sahaya maupun merdeka, laki-laki maupun perempuan, kecil maupun besar. Beliau saw memerintahkannya dilaksanakan sebelum orang-orang keluar untuk shalat.” (HR Bukhari Muslim)
+    </string>
+
+
+    <string name="niat_untuk_dirisendiri">ﻧَﻮَﻳْﺖُ أَﻥْ أُﺧْﺮِﺝَ ﺯَﻛَﺎﺓَ ﺍﻟْﻔِﻄْﺮِ ﻋَﻦْ ﻧَﻔْسيْ ﻓَﺮْﺿًﺎ ِﻟﻠﻪِ ﺗَﻌَﺎﻟَﻰ
+    </string>
+
+    <string name="latin_niat_untuk_dirisendiri">
+        "Nawaitu an ukhrija zakaatal fithri 'an nafsii fardhan lillaahi ta'aalaa"
+    </string>
+    <string name="arti_niat_untuk_dirisendiri">
+        Artinya: "Aku niat mengeluarkan zakat fitrah untuk diriku sendiri, fardu karena Allah Ta'âlâ."
+    </string>
+
+    <string name="niat_untuk_dirisendiri_dan_keluarga">
+        ﻧَﻮَﻳْﺖُ ﺃَﻥْ ﺃُﺧْﺮِﺝَ ﺯَﻛَﺎﺓَ ﺍﻟْﻔِﻄْﺮِ ﻋَنِّيْ ﻭَﻋَﻦْ ﺟَﻤِﻴْﻊِ ﻣَﺎ ﻳَﻠْﺰَﻣُنِيْ ﻧَﻔَﻘَﺎﺗُﻬُﻢْ ﺷَﺮْﻋًﺎ ﻓَﺮْﺿًﺎ ِﻟﻠﻪِ ﺗَﻌَﺎﻟَﻰ
+    </string>
+
+    <string name="latin_niat_untuk_dirisendiri_dan_keluarga">
+        "Nawaitu an ukhrija zakaatal fithri 'anni wa 'an jamii'i ma yalzamunii nafaqaatuhum syar'an fardhan lillaahi ta'aalaa"
+    </string>
+    <string name="arti_niat_untuk_dirisendiri_dan_keluarga">
+        Artinya: "Aku niat mengeluarkan zakat fitrah untuk diriku dan seluruh orang yang nafkahnya menjadi tanggunganku, fardu karena Allah Ta'âlâ."
+    </string>
+
 </resources>

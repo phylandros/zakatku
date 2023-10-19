@@ -4,25 +4,108 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DashboardFragment"
-    android:padding="15dp"
     android:background="#EEEEEE"
-    >
+    android:fillViewport="true">
 
-    <!-- TODO: Update blank fragment layout -->
-    <LinearLayout
+    <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center">
-        <TextView
-            android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="15dp">
+
+        <!-- TODO: Update blank fragment layout -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:orientation="vertical"
+            android:background="@drawable/dashboardshape">
+
+
+            <Button
+                android:id="@+id/logoutdash"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:text="Logout"
+                android:background="@drawable/btncolorback"
+                android:textColor="#000"
+                android:layout_gravity="end"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="20dp"
+
+                />
+
+            <TextView
+                android:id="@+id/hellotxt"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="40dp"
+                android:layout_marginLeft="50dp"
+                android:layout_height="wrap_content"
+                android:text="Selamat Datang," />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nama Pengguna"
+                android:textSize="20dp"
+                android:layout_marginLeft="50dp"
+                android:layout_below="@+id/hellotxt"
+                android:layout_alignParentLeft="true" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="#000000"
-            android:text="HELLO INI DASHBOARD"/>
+            android:orientation="vertical"
+            android:gravity="center">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="MENU"
+                android:layout_marginTop="25dp"
+                android:textColor="#000"
+                android:textStyle="bold"
+                android:textSize="18dp"
+                android:gravity="center" />
+        </LinearLayout>
 
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:shrinkColumns="*"
+            android:stretchColumns="*"
+            android:layout_marginTop="15dp"
+            >
 
-    </LinearLayout>
+            <TableRow
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:gravity="center_horizontal">
 
+                <TextView
+                    android:id="@+id/zaku_tunai"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:text="ZaKu-Tunai"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:background="@drawable/dashboardshape"
+                    />
 
+                <TextView
+                    android:id="@+id/zaku_beras"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:text="ZaKu-Beras"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:background="@drawable/dashboardshape"
+                    android:layout_marginLeft="24dp"
+
+                    />
+
+            </TableRow>
+        </TableLayout>
+
+    </TableLayout>
 </ScrollView>

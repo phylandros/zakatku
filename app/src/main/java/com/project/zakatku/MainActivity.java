@@ -3,6 +3,7 @@ package com.project.zakatku;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import com.project.zakatku.DashboardFragment;
 
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -17,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
     BottomNavigationView bottomNavigationView;
     Fragment dashboardFragment, profileFragment, activeFragment;
+    DashboardFragment dashboardFragment2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,21 +33,17 @@ public class MainActivity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction().add(R.id.fragment_container,profileFragment, "2").hide(profileFragment).commit();
         getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, dashboardFragment, "1").commit();
 
-
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int itemId = item.getItemId();
 
-                if (itemId == R.id.menu_dashboard) {
-                    getSupportFragmentManager().beginTransaction().hide(activeFragment).show(dashboardFragment).commit();
-                    activeFragment = dashboardFragment;
+                if (itemId == MENU_DASHBOARD) {
+                    switchToDashboard();
                     return true;
-                } else if (itemId == R.id.menu_profile) {
-                    getSupportFragmentManager().beginTransaction().hide(activeFragment).show(profileFragment).commit();
-                    activeFragment = profileFragment;
+                } else if (itemId == MENU_PROFILE) {
+                    switchToProfile();
                     return true;
-
                 }
 
                 return false;
@@ -55,4 +53,24 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+    public void switchToDashboard() {
+        getSupportFragmentManager().beginTransaction().hide(activeFragment).show(dashboardFragment).commit();
+        activeFragment = dashboardFragment;
+    }
+
+    public void switchToProfile() {
+        getSupportFragmentManager().beginTransaction().hide(activeFragment).show(profileFragment).commit();
+        activeFragment = profileFragment;
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (activeFragment == dashboardFragment) {
+            dashboardFragment2.onBackButtonPressed(); // Panggil metode pada DashboardFragment
+        } else {
+            super.onBackPressed();
+        }
+    }
+
 }
