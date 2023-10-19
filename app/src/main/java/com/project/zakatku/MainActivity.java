@@ -3,6 +3,8 @@ package com.project.zakatku;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+
 import com.project.zakatku.DashboardFragment;
 
 import android.os.Bundle;
@@ -55,8 +57,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void switchToDashboard() {
-        getSupportFragmentManager().beginTransaction().hide(activeFragment).show(dashboardFragment).commit();
+//        getSupportFragmentManager().beginTransaction().hide(activeFragment).show(dashboardFragment).commit();
+//        activeFragment = dashboardFragment;
+
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        if (dashboardFragment == null) {
+            dashboardFragment = new DashboardFragment();
+            transaction.add(R.id.fragment_container, dashboardFragment, "1");
+        }
+        transaction.hide(activeFragment);
+        transaction.show(dashboardFragment);
         activeFragment = dashboardFragment;
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
 
     public void switchToProfile() {
@@ -66,11 +79,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if (activeFragment == dashboardFragment) {
-            dashboardFragment2.onBackButtonPressed(); // Panggil metode pada DashboardFragment
-        } else {
-            super.onBackPressed();
-        }
+        finish();
     }
 
 }
