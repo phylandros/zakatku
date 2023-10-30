@@ -74,7 +74,7 @@ public class DashboardFragment extends Fragment {
         txtZakuTunai.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), NiatActivity.class);
+                Intent intent = new Intent(getActivity(), InputZakatActivity.class);
                 startActivity(intent);
             }
         });
@@ -93,7 +93,7 @@ public class DashboardFragment extends Fragment {
     public void onBackButtonPressed() {
         MainActivity mainActivity = (MainActivity) getActivity();
         if (mainActivity != null) {
-            mainActivity.switchToDashboard(); // Metode yang akan mengganti tampilan ke DashboardFragment
+            mainActivity.switchToDashboard();
         }
     }
 

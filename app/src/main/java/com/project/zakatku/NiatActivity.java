@@ -11,7 +11,7 @@ import android.widget.Button;
 
 public class NiatActivity extends AppCompatActivity {
 
-    Button btnLanjutPembayaran, btnBackDashboard;
+    Button btnLanjutPembayaran, btnBackInputZakat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,16 +19,14 @@ public class NiatActivity extends AppCompatActivity {
         setContentView(R.layout.activity_niat);
 
         btnLanjutPembayaran = findViewById(R.id.lanjutPembayaran);
-        btnBackDashboard = findViewById(R.id.backDashboard);
+        btnBackInputZakat = findViewById(R.id.backDashboard);
 
 
-        btnBackDashboard.setOnClickListener(new View.OnClickListener() {
+        btnBackInputZakat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                FragmentTransaction transaction = fragmentManager.beginTransaction();
-                transaction.replace(R.id.fragment_container, new DashboardFragment());
-                transaction.commit();
+                Intent intent = new Intent(NiatActivity.this, InputZakatActivity.class);
+                startActivity(intent);
             }
         });
     }

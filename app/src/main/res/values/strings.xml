@@ -32,4 +32,25 @@
         Artinya: "Aku niat mengeluarkan zakat fitrah untuk diriku dan seluruh orang yang nafkahnya menjadi tanggunganku, fardu karena Allah Ta'âlâ."
     </string>
 
+    <string-array name="jumlah_jiwa">
+        <item>--Pilih Jiwa--</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </string-array>
+
+    <string-array name="pem_list">
+    <item>Dana</item>
+    <item>LinkAja</item>
+    <item>Item 3</item>
+    </string-array>
+
+
 </resources>
