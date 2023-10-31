@@ -47,9 +47,9 @@
     </string-array>
 
     <string-array name="pem_list">
-    <item>Dana</item>
-    <item>LinkAja</item>
-    <item>Item 3</item>
+        <item>--Pilih Pembayaran--</item>
+        <item>Dana</item>
+        <item>Link Aja</item>
     </string-array>
 
 

@@ -1,6 +1,8 @@
 package com.project.zakatku;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -25,7 +27,7 @@ public class DashboardFragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
 
 
-    TextView txtZakuTunai, txtZakuBeras;
+    TextView txtZakuTunai, txtZakuBeras, txtNamaPengguna;
     Button logoutDashboard;
 
 
@@ -71,6 +73,12 @@ public class DashboardFragment extends Fragment {
 
          txtZakuTunai = view.findViewById(R.id.zaku_tunai);
          logoutDashboard = view.findViewById(R.id.logoutdash);
+         txtNamaPengguna = view.findViewById(R.id.namaPengguna);
+         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+         String displayName = sharedPreferences.getString("displayName", "");
+
+        txtNamaPengguna.setText(displayName);
+
         txtZakuTunai.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -82,19 +90,25 @@ public class DashboardFragment extends Fragment {
         logoutDashboard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                SharedPreferences sharedPreferences = getActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.remove("userId");
+                editor.remove("displayName"); // Jika Anda juga menyimpan displayName
+                editor.apply();
+
+
                 Intent intent = new Intent(getActivity(), LoginActivity.class);
                 startActivity(intent);
+                getActivity().finish();
             }
         });
 
         return view;
     }
 
-    public void onBackButtonPressed() {
-        MainActivity mainActivity = (MainActivity) getActivity();
-        if (mainActivity != null) {
-            mainActivity.switchToDashboard();
-        }
+    public void onBackPressed() {
+
     }
 
 }

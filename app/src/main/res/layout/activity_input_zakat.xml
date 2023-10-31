@@ -96,12 +96,14 @@
             android:orientation="vertical">
 
             <EditText
+                android:id="@+id/noKKInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Nomor Induk KK"
                 android:textSize="18dp"/>
 
             <EditText
+                android:id="@+id/namaInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Nama Lengkap"
@@ -127,7 +129,6 @@
 
             <EditText
                 android:id="@+id/numphone"
-
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Nomor Handphone"

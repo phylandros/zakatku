@@ -2,6 +2,7 @@ package com.project.zakatku;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import android.content.SharedPreferences;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -98,8 +99,20 @@ public class LoginActivity extends AppCompatActivity {
 
                     if (Objects.equals(passwordFromDB, userPassword)){
                         signinUsername.setError(null);
+
+                        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        String displayName = snapshot.child(userUsername).child("nama").getValue(String.class);
+                        editor.putString("userId", userUsername);
+                        editor.putString("displayName", displayName);
+                        editor.apply();
+
+
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         startActivity(intent);
+                        finish();
+
+
                     } else {
                         signinPassowrd.setError("Password Salah.");
                         signinPassowrd.requestFocus();
@@ -115,5 +128,9 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    public void onBackPressed() {
+
     }
 }
