@@ -90,6 +90,7 @@
                     android:text="ZaKu-Tunai"
                     android:gravity="center"
                     android:textStyle="bold"
+                    android:elevation="15dp"
                     android:background="@drawable/dashboardshape"
                     />
 
@@ -100,9 +101,9 @@
                     android:text="ZaKu-Beras"
                     android:textStyle="bold"
                     android:gravity="center"
+                    android:elevation="15dp"
                     android:background="@drawable/dashboardshape"
                     android:layout_marginLeft="24dp"
-
                     />
 
             </TableRow>
