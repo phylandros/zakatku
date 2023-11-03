@@ -112,6 +112,10 @@ public class LoginActivity extends AppCompatActivity {
                         startActivity(intent);
                         finish();
 
+//                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+//                        intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                        startActivity(intent);
+
 
                     } else {
                         signinPassowrd.setError("Password Salah.");

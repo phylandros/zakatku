@@ -9,6 +9,7 @@ import com.project.zakatku.DashboardFragment;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -72,6 +73,8 @@ public class MainActivity extends AppCompatActivity {
         transaction.commit();
     }
 
+
+
     public void switchToProfile() {
         getSupportFragmentManager().beginTransaction().hide(activeFragment).show(profileFragment).commit();
         activeFragment = profileFragment;
@@ -79,7 +82,16 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        finish();
+        Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+
+        if (currentFragment instanceof DashboardFragment) {
+            Toast.makeText(MainActivity.this, "Tekan tombol logout untuk kembali ke login",Toast.LENGTH_SHORT).show();
+            // Jika DashboardFragment sedang ditampilkan, mencegah "back"
+            // Tampilkan dialog atau lakukan tindakan lain jika diperlukan
+        } else {
+            // Jika fragment lain sedang aktif, izinkan "back" seperti biasa
+            super.onBackPressed();
+        }
     }
 
 }

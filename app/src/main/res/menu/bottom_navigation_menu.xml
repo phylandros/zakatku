@@ -3,7 +3,7 @@
     <item
         android:id="@+id/menu_dashboard"
         android:title="Home"
-        android:icon="@drawable/baseline_dataset_24" />
+        android:icon="@drawable/baseline_dataset_24_wt" />
 
     <item
         android:id="@+id/menu_profile"

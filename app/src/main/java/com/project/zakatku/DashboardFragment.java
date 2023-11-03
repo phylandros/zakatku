@@ -97,10 +97,9 @@ public class DashboardFragment extends Fragment {
                 editor.remove("displayName"); // Jika Anda juga menyimpan displayName
                 editor.apply();
 
+                redirectToLogin();
 
-                Intent intent = new Intent(getActivity(), LoginActivity.class);
-                startActivity(intent);
-                getActivity().finish();
+
             }
         });
 
@@ -109,6 +108,13 @@ public class DashboardFragment extends Fragment {
 
     public void onBackPressed() {
 
+    }
+
+    private void redirectToLogin() {
+        Intent intent = new Intent(getActivity(), LoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+        getActivity().finish(); // Menutup MainActivity
     }
 
 }
