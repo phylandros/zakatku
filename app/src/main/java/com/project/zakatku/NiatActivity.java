@@ -29,6 +29,14 @@ public class NiatActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        btnLanjutPembayaran.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(NiatActivity.this, PembayaranActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     public void onBackPressed() {

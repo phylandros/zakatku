@@ -21,11 +21,52 @@
                 android:layout_marginTop="35dp"
                 >
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total Pembayaran"
+                    android:textColor="#000"
+                    android:textStyle="bold"
+                    android:textSize="20dp"/>
+
+                <TextView
+                    android:id="@+id/nom"
+                    android:gravity="end"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Rp 200000000000"
+                    android:textColor="#E11"
+                    android:textSize="20dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="35dp"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Virtual Account"
+                    android:textSize="20dp"
+                    android:textColor="#000"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="36dp"
+                    android:layout_marginTop="15dp"
+                    android:text="12371829371982"
+                    android:textColor="#000"
+                    android:textStyle="bold"/>
 
             </LinearLayout>
 
     </LinearLayout>
-
 
     <LinearLayout
         android:id="@+id/layoutButtons"

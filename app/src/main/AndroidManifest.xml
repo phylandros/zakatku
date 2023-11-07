@@ -6,9 +6,9 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@drawable/logoapp"
+        android:icon="@mipmap/ic_launcher"
         android:label="ZakatKu"
-        android:roundIcon="@drawable/logoapp"
+        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Zakatku"
         tools:targetApi="31">
