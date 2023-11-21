@@ -61,67 +61,36 @@ public class InputZakatActivity extends AppCompatActivity {
 
         String[] metodePembayaran = getResources().getStringArray(R.array.pem_list);
         int[] imageResIds = {R.drawable.baseline_assured_workload_24,R.drawable.dana_img, R.drawable.linkaja_img}; // Ganti dengan referensi gambar yang sesuai
-
-        CustomSpinnerAdapter adapter2 = new CustomSpinnerAdapter(this, R.layout.custom_spinner_item, Arrays.asList(metodePembayaran), imageResIds);
+        CustomSpinnerAdapter adapter2 = new CustomSpinnerAdapter(this, R.layout.costum_dropdown, Arrays.asList(metodePembayaran), imageResIds);
         spPembayaran.setAdapter(adapter2);
 
 
 
         String[] jumJiw = getResources().getStringArray(R.array.jumlah_jiwa);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.jumlah_jiwa, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        CustomSpinnerAdapterJiwa adapter = new CustomSpinnerAdapterJiwa(this, R.layout.costum_dropdown, jumJiw);
         spJiwa.setAdapter(adapter);
         spJiwa.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 String select = jumJiw[i];
-                String harga;
 
-                switch (select) {
-                    case "1":
-                        harga = String.valueOf(1*16000);
-                        break;
-                    case "2":
-                        harga = String.valueOf(2*16000);
-                        break;
-                    case "3":
-                        harga = String.valueOf(3*16000);
-                        break;
-                    case "4":
-                        harga = String.valueOf(4*16000);
-                        break;
-                    case "5":
-                        harga = String.valueOf(5*16000);
-                        break;
-                    case "6":
-                        harga = String.valueOf(6*16000);
-                        break;
-                    case "7":
-                        harga = String.valueOf(7*16000);
-                        break;
-                    case "8":
-                        harga = String.valueOf(8*16000);
-                        break;
-                    case "9":
-                        harga = String.valueOf(9*16000);
-                        break;
-                    case "10":
-                        harga = String.valueOf(10*16000);
-                        break;
-                    default:
-                        harga = "0"; // Pilihan default jika tidak ada yang cocok
-                        break;
+                // Cek apakah nilai yang dipilih adalah angka atau "--Pilih Jiwa--"
+                if (!select.equals("--Pilih Jiwa--")) {
+                    int jumlahJiwa = Integer.parseInt(select);
+                    String harga = String.valueOf(jumlahJiwa * 16000);
+                    tvNomBayar.setText(harga);
+                } else {
+                    // Jika "--Pilih Jiwa--" dipilih, atur teks kosong atau nilai lainnya
+                    tvNomBayar.setText("");
                 }
-
-                tvNomBayar.setText(harga);
-
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-
+                // Implementasi jika tidak ada yang dipilih
             }
         });
+
 
 
         cbBpk.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {

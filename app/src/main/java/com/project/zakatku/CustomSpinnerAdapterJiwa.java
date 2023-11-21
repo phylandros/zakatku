@@ -5,21 +5,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.List;
+public class CustomSpinnerAdapterJiwa extends ArrayAdapter<String> {
 
-public class CustomSpinnerAdapter extends ArrayAdapter<String> {
     private Context context;
-    private List<String> values;
-    private int[] imageResIds;
+    private String[] values;
 
-    public CustomSpinnerAdapter(Context context, int resource, List<String> values, int[] imageResIds) {
-        super(context, resource, values);
+    public CustomSpinnerAdapterJiwa(Context context, int textViewResourceId, String[] values) {
+        super(context, textViewResourceId, values);
         this.context = context;
         this.values = values;
-        this.imageResIds = imageResIds;
     }
 
     @Override
@@ -34,14 +30,12 @@ public class CustomSpinnerAdapter extends ArrayAdapter<String> {
 
     public View getCustomView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View row = inflater.inflate(R.layout.costum_dropdown_pembayaran, parent, false);
-        TextView label = (TextView) row.findViewById(R.id.spinnerItemText);
-        ImageView icon = (ImageView) row.findViewById(R.id.spinnerItemIcon);
+        View row = inflater.inflate(R.layout.costum_dropdown, parent, false);
 
-        label.setText(values.get(position));
-        icon.setImageResource(imageResIds[position]);
+        TextView label = row.findViewById(R.id.spinner_text);
+        label.setText(values[position]);
 
         return row;
     }
-}
 
+}
