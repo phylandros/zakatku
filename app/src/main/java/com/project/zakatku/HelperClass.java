@@ -2,14 +2,15 @@ package com.project.zakatku;
 
 public class HelperClass {
 
-    String nama, email, notel, username, password, conpassword;
+    String nama, email, notel, username, password, conpassword, setrole;
 
-    public HelperClass(String nama, String email, String notel, String username, String password) {
+    public HelperClass(String nama, String email, String notel, String username, String password, String setrole) {
         this.nama = nama;
         this.email = email;
         this.notel = notel;
         this.username = username;
         this.password = password;
+        this.setrole = setrole;
     }
 
     public String getNama() {
@@ -18,6 +19,14 @@ public class HelperClass {
 
     public void setNama(String nama) {
         this.nama = nama;
+    }
+
+    public String getSetrole() {
+        return setrole;
+    }
+
+    public void setSetrole(String setrole) {
+        this.setrole = setrole;
     }
 
     public String getEmail() {

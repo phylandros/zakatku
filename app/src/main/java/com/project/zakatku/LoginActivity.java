@@ -103,8 +103,10 @@ public class LoginActivity extends AppCompatActivity {
                         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         String displayName = snapshot.child(userUsername).child("nama").getValue(String.class);
+                        String setrole = snapshot.child(userUsername).child("setrole").getValue(String.class);
                         editor.putString("userId", userUsername);
                         editor.putString("displayName", displayName);
+                        editor.putString("setrole", setrole);
                         editor.apply();
 
 

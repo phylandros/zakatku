@@ -2,7 +2,7 @@ package com.project.zakatku;
 
 public class DataZakat {
 
-    String nama, noKK, metodePembayaran, jumlahJiwa, nomBayar,statusPembayaran;
+    String kodePembayaran, nama, noKK, metodePembayaran, jumlahJiwa, nomBayar,statusPembayaran;
 
     public String getStatusPembayaran() {
         return statusPembayaran;
@@ -11,7 +11,6 @@ public class DataZakat {
     public void setStatusPembayaran(String statusPembayaran) {
         this.statusPembayaran = statusPembayaran;
     }
-
     public String getNama() {
         return nama;
     }
@@ -73,7 +72,7 @@ public class DataZakat {
     public DataZakat() {
     }
 
-    public DataZakat(String nama, String noKK, String metodePembayaran, String jumlahJiwa, String nomBayar, boolean statusBapak, boolean statusIbu, String statusPembayaran) {
+    public DataZakat( String nama, String noKK, String metodePembayaran, String jumlahJiwa, String nomBayar, boolean statusBapak, boolean statusIbu, String statusPembayaran) {
         this.nama = nama;
         this.noKK = noKK;
         this.metodePembayaran = metodePembayaran;

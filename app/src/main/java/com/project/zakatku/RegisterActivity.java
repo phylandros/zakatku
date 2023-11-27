@@ -51,6 +51,7 @@ public class RegisterActivity extends AppCompatActivity {
                 String username = signupUsername.getText().toString();
                 String password = signupPassword.getText().toString();
                 String conpasswrod = signupConpassword.getText().toString();
+                String setrole = "user";
 
                 if (nama.isEmpty()||email.isEmpty()||noTel.isEmpty()||username.isEmpty()||password.isEmpty()||conpasswrod.isEmpty()){
                     Toast.makeText(RegisterActivity.this, "Isi Field yang kosong", Toast.LENGTH_SHORT).show();
@@ -67,7 +68,7 @@ public class RegisterActivity extends AppCompatActivity {
                             if (snapshot.exists()){
                             Toast.makeText(RegisterActivity.this, "Username sudah terdaftar. Silakan pilih username lain.", Toast.LENGTH_SHORT).show();
                             } else {
-                                HelperClass helperClass = new HelperClass(nama, email, noTel, username, password);
+                                HelperClass helperClass = new HelperClass(nama, email, noTel, username, password, setrole);
                                 reference.child(username).setValue(helperClass);
 
                                 Toast.makeText(RegisterActivity.this,"Register Berhasil", Toast.LENGTH_SHORT).show();

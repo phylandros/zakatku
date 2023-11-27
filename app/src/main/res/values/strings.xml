@@ -52,5 +52,16 @@
         <item>Link Aja</item>
     </string-array>
 
+    <string-array name="menu_dash_user">
+        <item>ZakatKu Tunai</item>
+        <item>ZakatKu Beras</item>
+    </string-array>
+
+    <string-array name="menu_dash_admin">
+        <item>ZakatKu Tunai</item>
+        <item>ZakatKu Beras</item>
+        <item>ZakatKu Verifikasi</item>
+        <item>ZakatKu Account</item>
+    </string-array>
 
 </resources>

@@ -27,13 +27,13 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.UUID;
 
 public class InputZakatActivity extends AppCompatActivity {
 
     private DataZakat dataZakat;
     FirebaseDatabase database;
     DatabaseReference reference;
-
     Button btnPembayaran, btnToDashboard;
     Spinner spJiwa,spPembayaran;
     TextView tvNomBayar;
@@ -58,13 +58,10 @@ public class InputZakatActivity extends AppCompatActivity {
         etNamaInput = findViewById(R.id.namaInput);
         etNoKKInput = findViewById(R.id.noKKInput);
 
-
         String[] metodePembayaran = getResources().getStringArray(R.array.pem_list);
         int[] imageResIds = {R.drawable.baseline_assured_workload_24,R.drawable.dana_img, R.drawable.linkaja_img}; // Ganti dengan referensi gambar yang sesuai
         CustomSpinnerAdapter adapter2 = new CustomSpinnerAdapter(this, R.layout.costum_dropdown, Arrays.asList(metodePembayaran), imageResIds);
         spPembayaran.setAdapter(adapter2);
-
-
 
         String[] jumJiw = getResources().getStringArray(R.array.jumlah_jiwa);
         CustomSpinnerAdapterJiwa adapter = new CustomSpinnerAdapterJiwa(this, R.layout.costum_dropdown, jumJiw);
@@ -95,29 +92,24 @@ public class InputZakatActivity extends AppCompatActivity {
 
         cbBpk.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (cbBpk.isChecked()) {
-                    dataZakat.setStatusBapak(true);
-                    dataZakat.setStatusIbu(false);
-                } else {
-                    dataZakat.setStatusBapak(false);
-                    dataZakat.setStatusIbu(true);
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                if (isChecked) {
+                    cbIbu.setChecked(false);
                 }
+                dataZakat.setStatusBapak(isChecked);
             }
         });
 
         cbIbu.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (cbIbu.isChecked()) {
-                    dataZakat.setStatusIbu(true);
-                    dataZakat.setStatusBapak(false);
-                } else {
-                    dataZakat.setStatusIbu(false);
-                    dataZakat.setStatusBapak(true);
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                if (isChecked) {
+                    cbBpk.setChecked(false);
                 }
+                dataZakat.setStatusIbu(isChecked);
             }
         });
+
 
 
         btnPembayaran.setOnClickListener(new View.OnClickListener() {
@@ -129,6 +121,7 @@ public class InputZakatActivity extends AppCompatActivity {
                 String jumlahJiwa = spJiwa.getSelectedItem().toString();
                 String nomBayar = tvNomBayar.getText().toString();
                 String statusPembayaran = "Belum dibayar";
+                String kodePembayaran = UUID.randomUUID().toString();
 
                 if (nama.isEmpty()||noKK.isEmpty()||metodePembayaran.isEmpty()||jumlahJiwa.isEmpty()||nomBayar.isEmpty()){
                     Toast.makeText(InputZakatActivity.this, "Isi Field yang kosong", Toast.LENGTH_SHORT).show();
@@ -138,15 +131,15 @@ public class InputZakatActivity extends AppCompatActivity {
                     reference.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
-                            long childCount = dataSnapshot.getChildrenCount();
-                            String dataZakatId = String.valueOf(childCount + 1);
-
+                            String dataZakatId = reference.push().getKey(); // Mendapatkan kunci unik dari Firebase
                             DataZakat dataZakat = new DataZakat(nama, noKK, metodePembayaran, jumlahJiwa, nomBayar, cbBpk.isChecked(), cbIbu.isChecked(), statusPembayaran);
                             reference.child(dataZakatId).setValue(dataZakat);
-                            Toast.makeText(InputZakatActivity.this, "Data Berhasil di Input", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(InputZakatActivity.this, NiatActivity.class);
+
+                            // Mengirim kode pembayaran ke PembayaranActivity
+                            Intent intent = new Intent(InputZakatActivity.this, PembayaranActivity.class);
+                            intent.putExtra("KODE_PEMBAYARAN", dataZakatId); // Mengirim kode pembayaran
                             startActivity(intent);
-                            finish();
+                            finish(); // Tutup InputZakatActivity
                         }
 
                         @Override
@@ -154,6 +147,8 @@ public class InputZakatActivity extends AppCompatActivity {
                             // Handle kesalahan jika diperlukan
                         }
                     });
+
+
                 }
 
 
