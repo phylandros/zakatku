@@ -121,7 +121,6 @@ public class InputZakatActivity extends AppCompatActivity {
                 String jumlahJiwa = spJiwa.getSelectedItem().toString();
                 String nomBayar = tvNomBayar.getText().toString();
                 String statusPembayaran = "Belum dibayar";
-                String kodePembayaran = UUID.randomUUID().toString();
 
                 if (nama.isEmpty()||noKK.isEmpty()||metodePembayaran.isEmpty()||jumlahJiwa.isEmpty()||nomBayar.isEmpty()){
                     Toast.makeText(InputZakatActivity.this, "Isi Field yang kosong", Toast.LENGTH_SHORT).show();
@@ -131,15 +130,14 @@ public class InputZakatActivity extends AppCompatActivity {
                     reference.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
-                            String dataZakatId = reference.push().getKey(); // Mendapatkan kunci unik dari Firebase
+                            String dataZakatId = String.valueOf(System.currentTimeMillis());
                             DataZakat dataZakat = new DataZakat(nama, noKK, metodePembayaran, jumlahJiwa, nomBayar, cbBpk.isChecked(), cbIbu.isChecked(), statusPembayaran);
                             reference.child(dataZakatId).setValue(dataZakat);
 
-                            // Mengirim kode pembayaran ke PembayaranActivity
-                            Intent intent = new Intent(InputZakatActivity.this, PembayaranActivity.class);
+                            Intent intent = new Intent(InputZakatActivity.this, NiatActivity.class);
                             intent.putExtra("KODE_PEMBAYARAN", dataZakatId); // Mengirim kode pembayaran
                             startActivity(intent);
-                            finish(); // Tutup InputZakatActivity
+                            finish();
                         }
 
                         @Override

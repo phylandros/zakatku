@@ -34,7 +34,9 @@ public class NiatActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(NiatActivity.this, PembayaranActivity.class);
+                intent.putExtra("KODE_PEMBAYARAN", getIntent().getStringExtra("KODE_PEMBAYARAN"));
                 startActivity(intent);
+
             }
         });
     }
