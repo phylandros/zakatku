@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.view.KeyEvent;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -40,6 +41,18 @@ public class LoginActivity extends AppCompatActivity {
         txtForgotPassword = findViewById(R.id.lupapsswd);
         txtSignUp = findViewById(R.id.txtsignup);
         btnLogin = findViewById(R.id.btnlogin);
+
+        signinPassowrd.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (keyCode == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_DOWN) {
+                    // Panggil method checkUser() ketika tombol Enter ditekan
+                    checkUser();
+                    return true;
+                }
+                return false;
+            }
+        });
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,10 +126,6 @@ public class LoginActivity extends AppCompatActivity {
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         startActivity(intent);
                         finish();
-
-//                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-//                        intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//                        startActivity(intent);
 
 
                     } else {

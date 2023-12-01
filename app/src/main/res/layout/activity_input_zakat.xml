@@ -166,23 +166,23 @@
 
         </LinearLayout>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Metode Pembayaran"
-                android:paddingLeft="3dp"
-                android:textStyle="bold"/>
+<!--            <TextView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Metode Pembayaran"-->
+<!--                android:paddingLeft="3dp"-->
+<!--                android:textStyle="bold"/>-->
 
-            <Spinner
+<!--            <Spinner-->
 
-                android:id="@+id/pembayarn"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:background="@drawable/costum_spinner"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="25dp"/>
+<!--                android:id="@+id/pembayarn"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="50dp"-->
+<!--                android:paddingLeft="10dp"-->
+<!--                android:paddingRight="10dp"-->
+<!--                android:background="@drawable/costum_spinner"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:layout_marginBottom="25dp"/>-->
 
 
 

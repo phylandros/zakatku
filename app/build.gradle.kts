@@ -15,12 +15,19 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "SERVER_KEY", "\"${project.findProperty("serverKey")}\"")
+        buildConfigField("String", "CLIENT_KEY", "\"${project.findProperty("clientKey")}\"")
+        buildConfigField("String", "API_SANDBOX", "\"${project.findProperty("apiSandbox")}\"")
     }
 
     buildTypes {
         release {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+        }
+        buildFeatures {
+            buildConfig = true
         }
     }
     compileOptions {

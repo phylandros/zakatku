@@ -7,8 +7,12 @@ import androidx.fragment.app.FragmentTransaction;
 import android.content.ClipData;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.View;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -25,6 +29,16 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.UUID;
@@ -39,7 +53,6 @@ public class InputZakatActivity extends AppCompatActivity {
     TextView tvNomBayar;
     CheckBox cbBpk, cbIbu;
     EditText etNumPhone, etNoKKInput, etNamaInput;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,14 +67,8 @@ public class InputZakatActivity extends AppCompatActivity {
         cbBpk = findViewById(R.id.Bapak);
         cbIbu = findViewById(R.id.Ibu);
         etNumPhone = findViewById(R.id.numphone);
-        spPembayaran = findViewById(R.id.pembayarn);
         etNamaInput = findViewById(R.id.namaInput);
         etNoKKInput = findViewById(R.id.noKKInput);
-
-        String[] metodePembayaran = getResources().getStringArray(R.array.pem_list);
-        int[] imageResIds = {R.drawable.baseline_assured_workload_24,R.drawable.dana_img, R.drawable.linkaja_img}; // Ganti dengan referensi gambar yang sesuai
-        CustomSpinnerAdapter adapter2 = new CustomSpinnerAdapter(this, R.layout.costum_dropdown, Arrays.asList(metodePembayaran), imageResIds);
-        spPembayaran.setAdapter(adapter2);
 
         String[] jumJiw = getResources().getStringArray(R.array.jumlah_jiwa);
         CustomSpinnerAdapterJiwa adapter = new CustomSpinnerAdapterJiwa(this, R.layout.costum_dropdown, jumJiw);
@@ -88,8 +95,6 @@ public class InputZakatActivity extends AppCompatActivity {
             }
         });
 
-
-
         cbBpk.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
@@ -112,17 +117,16 @@ public class InputZakatActivity extends AppCompatActivity {
 
 
 
+
         btnPembayaran.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String nama = etNamaInput.getText().toString();
                 String noKK = etNoKKInput.getText().toString();
-                String metodePembayaran = spPembayaran.getSelectedItem().toString();
                 String jumlahJiwa = spJiwa.getSelectedItem().toString();
                 String nomBayar = tvNomBayar.getText().toString();
-                String statusPembayaran = "Belum dibayar";
 
-                if (nama.isEmpty()||noKK.isEmpty()||metodePembayaran.isEmpty()||jumlahJiwa.isEmpty()||nomBayar.isEmpty()){
+                if (nama.isEmpty()||noKK.isEmpty()||jumlahJiwa.isEmpty()||nomBayar.isEmpty()){
                     Toast.makeText(InputZakatActivity.this, "Isi Field yang kosong", Toast.LENGTH_SHORT).show();
                 } else {
                     database = FirebaseDatabase.getInstance("https://zakatku-35bff-default-rtdb.asia-southeast1.firebasedatabase.app");
@@ -131,11 +135,11 @@ public class InputZakatActivity extends AppCompatActivity {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             String dataZakatId = String.valueOf(System.currentTimeMillis());
-                            DataZakat dataZakat = new DataZakat(nama, noKK, metodePembayaran, jumlahJiwa, nomBayar, cbBpk.isChecked(), cbIbu.isChecked(), statusPembayaran);
-                            reference.child(dataZakatId).setValue(dataZakat);
 
                             Intent intent = new Intent(InputZakatActivity.this, NiatActivity.class);
                             intent.putExtra("KODE_PEMBAYARAN", dataZakatId); // Mengirim kode pembayaran
+                            intent.putExtra("NAMA", nama);
+                            intent.putExtra("JUMLAH_JIWA", jumlahJiwa);
                             startActivity(intent);
                             finish();
                         }
@@ -145,12 +149,7 @@ public class InputZakatActivity extends AppCompatActivity {
                             // Handle kesalahan jika diperlukan
                         }
                     });
-
-
                 }
-
-
-
             }
         });
 
@@ -164,5 +163,8 @@ public class InputZakatActivity extends AppCompatActivity {
         });
 
     }
+
+
+
 
 }
