@@ -28,9 +28,6 @@ import com.google.firebase.database.ValueEventListener;
 
 public class PembayaranActivity extends AppCompatActivity {
 
-    DatabaseReference databaseReference; // Referensi ke Firebase Database
-    TextView kodePembayaranTextView, nominalPembayaranTextView, vakode;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

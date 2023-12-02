@@ -101,7 +101,6 @@ public class InputZakatActivity extends AppCompatActivity {
                 if (isChecked) {
                     cbIbu.setChecked(false);
                 }
-                dataZakat.setStatusBapak(isChecked);
             }
         });
 
@@ -111,7 +110,6 @@ public class InputZakatActivity extends AppCompatActivity {
                 if (isChecked) {
                     cbBpk.setChecked(false);
                 }
-                dataZakat.setStatusIbu(isChecked);
             }
         });
 
@@ -125,6 +123,8 @@ public class InputZakatActivity extends AppCompatActivity {
                 String noKK = etNoKKInput.getText().toString();
                 String jumlahJiwa = spJiwa.getSelectedItem().toString();
                 String nomBayar = tvNomBayar.getText().toString();
+                String NomPhone = etNumPhone.getText().toString();
+
 
                 if (nama.isEmpty()||noKK.isEmpty()||jumlahJiwa.isEmpty()||nomBayar.isEmpty()){
                     Toast.makeText(InputZakatActivity.this, "Isi Field yang kosong", Toast.LENGTH_SHORT).show();
@@ -135,11 +135,20 @@ public class InputZakatActivity extends AppCompatActivity {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             String dataZakatId = String.valueOf(System.currentTimeMillis());
+                            String Username = getIntent().getStringExtra("userId");
+
+                            DataZakat dataZakat = new DataZakat(Username, jumlahJiwa, nomBayar);
+                            reference.child(dataZakatId).setValue(dataZakat);
+                            Toast.makeText(InputZakatActivity.this, "Data Berhasil di Input", Toast.LENGTH_SHORT).show();
 
                             Intent intent = new Intent(InputZakatActivity.this, NiatActivity.class);
+                            String Email = getIntent().getStringExtra("email");
+
                             intent.putExtra("KODE_PEMBAYARAN", dataZakatId); // Mengirim kode pembayaran
                             intent.putExtra("NAMA", nama);
                             intent.putExtra("JUMLAH_JIWA", jumlahJiwa);
+                            intent.putExtra("EMAIL", Email);
+                            intent.putExtra("NUM_PHONE", NomPhone);
                             startActivity(intent);
                             finish();
                         }

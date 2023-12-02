@@ -72,8 +72,8 @@ public class DashboardFragment extends Fragment {
         }
 
     }
-    private void setupRecyclerView(RecyclerView recyclerView, String[] cardContents) {
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(cardContents);
+    private void setupRecyclerView(RecyclerView recyclerView, String[] cardContents, String userEmail, String Username) {
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(cardContents, userEmail, Username);
         recyclerView.setAdapter(adapter);
 
         // Mengatur GridLayoutManager dengan 3 kolom
@@ -87,18 +87,21 @@ public class DashboardFragment extends Fragment {
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
         SharedPreferences sharedPreferences2 = getActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         String role = sharedPreferences2.getString("setrole", "");
+        String Email = sharedPreferences2.getString("email", "");
+        String Username = sharedPreferences2.getString("userId", "");
 
         if (role.equals("admin")) {
             String[] adminArray = {"Zaku-Beras", "Zaku-Tunai", "Zaku-Verif", "Zaku-Akun"};
-            setupRecyclerView(recyclerView, adminArray);
+            setupRecyclerView(recyclerView, adminArray,Email, Username);
         } else {
             String[] userArray = {"Zaku-Beras", "Zaku-Tunai"};
-            setupRecyclerView(recyclerView, userArray);
+            setupRecyclerView(recyclerView, userArray,Email, Username);
         }
          logoutDashboard = view.findViewById(R.id.logoutdash);
          txtNamaPengguna = view.findViewById(R.id.namaPengguna);
          SharedPreferences sharedPreferences = getActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
          String displayName = sharedPreferences.getString("displayName", "");
+
 
          txtNamaPengguna.setText(displayName);
 

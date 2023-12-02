@@ -1,5 +1,7 @@
 package com.project.zakatku;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,6 +9,13 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -24,6 +33,7 @@ public class ProfileFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    TextView textViewNomBayar;
     public ProfileFragment() {
         // Required empty public constructor
     }
@@ -56,9 +66,44 @@ public class ProfileFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_profile, container, false);
+
+        // Mendapatkan username pengguna yang sedang login dari SharedPreferences
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        String loggedInUsername = sharedPreferences.getString("userId", ""); // Ganti dengan key yang benar
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance("https://zakatku-35bff-default-rtdb.asia-southeast1.firebasedatabase.app");
+        DatabaseReference pembayaranRef = database.getReference("pembayaran");
+
+        pembayaranRef.orderByChild("username").equalTo(loggedInUsername).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                long totalNomBayar = 0;
+
+                if (dataSnapshot.exists()) {
+                    // Loop melalui hasil yang cocok dengan username
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                        String nomBayar = snapshot.child("nomBayar").getValue(String.class);
+                        totalNomBayar += Long.parseLong(nomBayar);
+                    }
+                    TextView textViewTotalNomBayar = view.findViewById(R.id.textViewTotalNomBayar);
+                    textViewTotalNomBayar.setText("Total Zakat : Rp " + totalNomBayar);
+
+                } else {
+                    TextView textViewTotalNomBayar = view.findViewById(R.id.textViewTotalNomBayar);
+                    textViewTotalNomBayar.setText("Belum pernah berzakat");
+
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Handle kesalahan jika diperlukan
+            }
+        });
+
+        return view;
+
     }
 }

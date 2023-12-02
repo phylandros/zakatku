@@ -56,8 +56,9 @@ public class NiatActivity extends AppCompatActivity {
                 String kodePembayaran = getIntent().getStringExtra("KODE_PEMBAYARAN");
                 String Nama = getIntent().getStringExtra("NAMA");
                 String JumlahJiwa = getIntent().getStringExtra("JUMLAH_JIWA");
-
-                createPaymentLink("ZaKu-Tunai "+Nama, 16000, kodePembayaran, Integer.valueOf(JumlahJiwa));
+                String Email = getIntent().getStringExtra("EMAIL");
+                String numPhone = getIntent().getStringExtra("NUM_PHONE");
+                createPaymentLink("ZaKu-Tunai "+Nama, 16000, kodePembayaran, Integer.valueOf(JumlahJiwa),Email,numPhone,Nama);
             }
         });
     }
@@ -66,7 +67,7 @@ public class NiatActivity extends AppCompatActivity {
         finish();
     }
 
-    private void createPaymentLink(String productName, int productPrice, String orderId, int quantity) {
+    private void createPaymentLink(String productName, int productPrice, String orderId, int quantity, String Email, String numPhone, String Nama) {
         try {
             JSONObject jsonObject = new JSONObject();
 
@@ -84,6 +85,14 @@ public class NiatActivity extends AppCompatActivity {
             item.put("price", productPrice);
             item.put("quantity", quantity);
             itemDetails.put(item);
+            jsonObject.put("item_details", itemDetails);
+
+            // Customer Details
+            JSONObject customerDetails = new JSONObject();
+            customerDetails.put("first_name", Nama);
+            customerDetails.put("email", Email);
+            customerDetails.put("phone", numPhone);
+            jsonObject.put("customer_details", customerDetails);
 
             jsonObject.put("item_details", itemDetails);
             String jsonData = jsonObject.toString();

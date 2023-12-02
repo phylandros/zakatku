@@ -2,37 +2,20 @@ package com.project.zakatku;
 
 public class DataZakat {
 
-    String kodePembayaran, nama, noKK, metodePembayaran, jumlahJiwa, nomBayar,statusPembayaran;
+    String username, jumlahJiwa, nomBayar;
 
-    public String getStatusPembayaran() {
-        return statusPembayaran;
+    public DataZakat(String username, String jumlahJiwa, String nomBayar) {
+        this.username = username;
+        this.jumlahJiwa = jumlahJiwa;
+        this.nomBayar = nomBayar;
     }
 
-    public void setStatusPembayaran(String statusPembayaran) {
-        this.statusPembayaran = statusPembayaran;
-    }
-    public String getNama() {
-        return nama;
+    public String getUsername() {
+        return username;
     }
 
-    public void setNama(String nama) {
-        this.nama = nama;
-    }
-
-    public String getNoKK() {
-        return noKK;
-    }
-
-    public void setNoKK(String noKK) {
-        this.noKK = noKK;
-    }
-
-    public String getMetodePembayaran() {
-        return metodePembayaran;
-    }
-
-    public void setMetodePembayaran(String metodePembayaran) {
-        this.metodePembayaran = metodePembayaran;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getJumlahJiwa() {
@@ -51,35 +34,8 @@ public class DataZakat {
         this.nomBayar = nomBayar;
     }
 
-    public boolean isStatusBapak() {
-        return statusBapak;
+    public DataZakat(){
+
     }
 
-    public void setStatusBapak(boolean statusBapak) {
-        this.statusBapak = statusBapak;
-    }
-
-    public boolean isStatusIbu() {
-        return statusIbu;
-    }
-
-    public void setStatusIbu(boolean statusIbu) {
-        this.statusIbu = statusIbu;
-    }
-
-    boolean statusBapak, statusIbu;
-
-    public DataZakat() {
-    }
-
-    public DataZakat( String nama, String noKK, String metodePembayaran, String jumlahJiwa, String nomBayar, boolean statusBapak, boolean statusIbu, String statusPembayaran) {
-        this.nama = nama;
-        this.noKK = noKK;
-        this.metodePembayaran = metodePembayaran;
-        this.jumlahJiwa = jumlahJiwa;
-        this.nomBayar = nomBayar;
-        this.statusBapak = statusBapak;
-        this.statusIbu = statusIbu;
-        this.statusPembayaran = statusPembayaran;
-    }
 }

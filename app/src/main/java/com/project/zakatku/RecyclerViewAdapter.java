@@ -1,6 +1,8 @@
 package com.project.zakatku;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,9 +14,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
     private String[] mData;
+    private String userEmail;
+    private String Username;
 
-    public RecyclerViewAdapter(String[] data) {
+    public RecyclerViewAdapter(String[] data, String userEmail, String Username) {
         mData = data;
+        this.userEmail = userEmail;
+        this.Username = Username;
+
     }
 
     @NonNull
@@ -35,6 +42,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 public void onClick(View view) {
                     // Lakukan aksi ketika CardView "Zaku-Tunai" diklik
                     Intent intent = new Intent(view.getContext(), InputZakatActivity.class);
+                    intent.putExtra("email", userEmail);
+                    intent.putExtra("userId", Username);
                     view.getContext().startActivity(intent);
                 }
             });
