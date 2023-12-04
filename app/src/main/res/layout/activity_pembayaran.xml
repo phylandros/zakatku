@@ -17,13 +17,11 @@
         android:background="#113946"
         android:orientation="horizontal">
 
-
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
             >
-
             <TextView
                 android:id="@+id/juduldeskripsi"
                 android:layout_width="wrap_content"
