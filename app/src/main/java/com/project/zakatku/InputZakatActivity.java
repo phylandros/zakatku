@@ -53,6 +53,7 @@ public class InputZakatActivity extends AppCompatActivity {
     TextView tvNomBayar;
     CheckBox cbBpk, cbIbu;
     EditText etNumPhone, etNoKKInput, etNamaInput;
+    String Harga_tunai = "16000";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -149,6 +150,7 @@ public class InputZakatActivity extends AppCompatActivity {
                             intent.putExtra("JUMLAH_JIWA", jumlahJiwa);
                             intent.putExtra("EMAIL", Email);
                             intent.putExtra("NUM_PHONE", NomPhone);
+                            intent.putExtra("HARGA_TUNAI", Harga_tunai);
                             startActivity(intent);
                             finish();
                         }

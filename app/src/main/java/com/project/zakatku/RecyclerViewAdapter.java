@@ -49,6 +49,16 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             });
         } else if (mData[position].equals("Zaku-Beras")) {
             holder.imageView.setImageResource(R.drawable.rice);
+
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(view.getContext(), BerasActivity.class);
+                    intent.putExtra("email", userEmail);
+                    intent.putExtra("userId", Username);
+                    view.getContext().startActivity(intent);
+                }
+            });
         } else if (mData[position].equals("Zaku-Verif")) {
             holder.imageView.setImageResource(R.drawable.verif);
         } else if (mData[position].equals("Zaku-Akun")) {

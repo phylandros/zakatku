@@ -4,11 +4,13 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -72,9 +74,16 @@ public class ProfileFragment extends Fragment {
         // Mendapatkan username pengguna yang sedang login dari SharedPreferences
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         String loggedInUsername = sharedPreferences.getString("userId", ""); // Ganti dengan key yang benar
+        TextView txtPassword = view.findViewById(R.id.txtpassword);
+        TextView txtNama = view.findViewById(R.id.txtnama);
+        TextView txtEmail = view.findViewById(R.id.txtemail);
+        TextView txtUsername = view.findViewById(R.id.txtusername);
+        TextView txtNotel = view.findViewById(R.id.txttelp);
+
 
         FirebaseDatabase database = FirebaseDatabase.getInstance("https://zakatku-35bff-default-rtdb.asia-southeast1.firebasedatabase.app");
         DatabaseReference pembayaranRef = database.getReference("pembayaran");
+        DatabaseReference dataUser = database.getReference("users");
 
         pembayaranRef.orderByChild("username").equalTo(loggedInUsername).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -103,7 +112,58 @@ public class ProfileFragment extends Fragment {
             }
         });
 
+        dataUser.orderByChild("username").equalTo(loggedInUsername).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                String nama = "", email = "", username = "", password = "", notel = "";
+
+                if (dataSnapshot.exists()) {
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                        nama = snapshot.child("nama").getValue(String.class);
+                        email = snapshot.child("email").getValue(String.class);
+                        username = snapshot.child("username").getValue(String.class);
+                        password = snapshot.child("password").getValue(String.class);
+                        notel = snapshot.child("notel").getValue(String.class);
+                    }
+                    txtNama.setText(nama);
+                    txtEmail.setText(email);
+                    txtUsername.setText(username);
+                    txtPassword.setText("*******");
+                    txtNotel.setText(notel);
+                    String finalPassword = password;
+                    txtPassword.setOnClickListener(new View.OnClickListener() {
+                        boolean isPasswordVisible = false;
+
+                        @Override
+                        public void onClick(View v) {
+                            if (!isPasswordVisible) {
+                                // Jika password belum terlihat, tampilkan password
+                                txtPassword.setText(finalPassword);
+                                isPasswordVisible = true;
+                            } else {
+                                // Jika password sudah terlihat, sembunyikan kembali
+                                txtPassword.setText("*******");
+                                isPasswordVisible = false;
+                            }
+                        }
+                    });
+                } else {
+                    // Jika data pengguna tidak ditemukan, berikan pesan atau lakukan tindakan yang sesuai
+                    // Misalnya:
+                    txtPassword.setText("Data tidak ditemukan");
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
         return view;
 
     }
+
 }

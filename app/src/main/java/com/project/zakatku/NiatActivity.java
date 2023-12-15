@@ -58,7 +58,8 @@ public class NiatActivity extends AppCompatActivity {
                 String JumlahJiwa = getIntent().getStringExtra("JUMLAH_JIWA");
                 String Email = getIntent().getStringExtra("EMAIL");
                 String numPhone = getIntent().getStringExtra("NUM_PHONE");
-                createPaymentLink("ZaKu-Tunai "+Nama, 16000, kodePembayaran, Integer.valueOf(JumlahJiwa),Email,numPhone,Nama);
+                String hargaTunai = getIntent().getStringExtra("HARGA_TUNAI");
+                createPaymentLink("ZaKu-Tunai "+Nama, Integer.parseInt(hargaTunai), kodePembayaran, Integer.valueOf(JumlahJiwa),Email,numPhone,Nama);
             }
         });
     }

@@ -20,9 +20,21 @@
             android:background="@drawable/shapeprofile">
 
             <TextView
-                android:layout_width="match_parent"
+
+                android:layout_width="130dp"
                 android:layout_height="50dp"
                 android:text="Nama"
+                android:textSize="16dp"
+                android:gravity="start"
+                android:padding="12dp"
+                android:textColor="#000"
+                android:fontFamily="@font/font_rubik"
+                />
+
+            <TextView
+                android:id="@+id/txtnama"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
                 android:textSize="16dp"
                 android:gravity="start"
                 android:padding="12dp"
@@ -40,50 +52,115 @@
             android:orientation="vertical"
             >
 
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:text="Email"
-                android:textSize="16dp"
-                android:gravity="start"
-                android:padding="12dp"
-                android:textColor="#000"
-                android:fontFamily="@font/font_rubik"
-                />
+                android:layout_height="wrap_content"
+                >
+                <TextView
+                    android:layout_width="130dp"
+                    android:layout_height="50dp"
+                    android:text="Email"
+                    android:textSize="16dp"
+                    android:gravity="start"
+                    android:padding="12dp"
+                    android:textColor="#000"
+                    android:fontFamily="@font/font_rubik"
+                    />
 
-            <TextView
+                <TextView
+                    android:id="@+id/txtemail"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:textSize="16dp"
+                    android:gravity="start"
+                    android:padding="12dp"
+                    android:textColor="#000"
+                    android:fontFamily="@font/font_rubik"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:text="No. Telp"
-                android:textSize="16dp"
-                android:gravity="start"
-                android:padding="12dp"
-                android:textColor="#000"
-                android:fontFamily="@font/font_rubik"
-                />
+                android:layout_height="wrap_content"
+                >
+                <TextView
+                    android:layout_width="130dp"
+                    android:layout_height="50dp"
+                    android:text="No. Telp"
+                    android:textSize="16dp"
+                    android:gravity="start"
+                    android:padding="12dp"
+                    android:textColor="#000"
+                    android:fontFamily="@font/font_rubik"
+                    />
 
-            <TextView
+                <TextView
+                    android:id="@+id/txttelp"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:textSize="16dp"
+                    android:gravity="start"
+                    android:padding="12dp"
+                    android:textColor="#000"
+                    android:fontFamily="@font/font_rubik"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:text="Username"
-                android:textSize="16dp"
-                android:gravity="start"
-                android:padding="12dp"
-                android:textColor="#000"
-                android:fontFamily="@font/font_rubik"
-                />
+                android:layout_height="wrap_content"
+                >
+                <TextView
+                    android:layout_width="130dp"
+                    android:layout_height="50dp"
+                    android:text="Username"
+                    android:textSize="16dp"
+                    android:gravity="start"
+                    android:padding="12dp"
+                    android:textColor="#000"
+                    android:fontFamily="@font/font_rubik"
+                    />
 
-            <TextView
+                <TextView
+                    android:id="@+id/txtusername"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:textSize="16dp"
+                    android:gravity="start"
+                    android:padding="12dp"
+                    android:textColor="#000"
+                    android:fontFamily="@font/font_rubik"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:text="Password"
-                android:textSize="16dp"
-                android:gravity="start"
-                android:padding="12dp"
-                android:textColor="#000"
-                android:fontFamily="@font/font_rubik"
-                />
+                android:layout_height="wrap_content"
+                >
+                <TextView
+                    android:layout_width="130dp"
+                    android:layout_height="50dp"
+                    android:text="Password"
+                    android:textSize="16dp"
+                    android:gravity="start"
+                    android:padding="12dp"
+                    android:textColor="#000"
+                    android:fontFamily="@font/font_rubik"
+                    />
 
+                <TextView
+                    android:id="@+id/txtpassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:textSize="16dp"
+                    android:gravity="start"
+                    android:padding="12dp"
+                    android:textColor="#000"
+                    android:fontFamily="@font/font_rubik"
+                    />
+            </LinearLayout>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -95,7 +172,7 @@
                 android:id="@+id/textViewTotalNomBayar"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:text="tes1"
+                android:text="Total Pembayaran Zakat"
                 android:textSize="16dp"
                 android:gravity="center"
                 android:textColor="#000"

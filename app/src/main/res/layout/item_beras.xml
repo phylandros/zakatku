@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:layout_marginTop="10dp"
+    >
+
+<ImageView
+    android:id="@+id/imageview"
+    android:layout_width="150dp"
+    android:layout_height="100dp"
+    android:scaleType="centerCrop" />
+
+<TextView
+    android:id="@+id/nama_beras"
+    android:gravity="center"
+    android:layout_width="150dp"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/imageview"
+    android:layout_marginTop="8dp"
+    android:text="Nama Beras"
+    android:textSize="16sp" />
+
+<TextView
+    android:id="@+id/harga_beras"
+    android:gravity="center"
+    android:layout_width="150dp"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/nama_beras"
+    android:layout_marginTop="4dp"
+    android:text="Harga Beras"
+    android:textSize="14sp" />
+
+</RelativeLayout>
